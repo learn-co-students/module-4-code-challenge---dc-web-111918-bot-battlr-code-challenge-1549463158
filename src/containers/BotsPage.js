@@ -22,18 +22,17 @@ class BotsPage extends React.Component {
     })
   }
 
-  addBotToArmy = (botKey) => {
-      let botToAdd = this.state.allBotData.find(bot => botKey == bot.id)
-      let botInArmy = this.state.botArmy.find(bot => botKey == bot.id)
-      if (botInArmy != botToAdd) {
+  addBotToArmy = (bot) => {
+      let botInArmy = this.state.botArmy.find(foundBot => bot.id == foundBot.id)
+      if (botInArmy != bot) {
       this.setState({
-        botArmy: [...this.state.botArmy, botToAdd]
+        botArmy: [...this.state.botArmy, bot]
       })
     }
   }
 
-  removeFromBotArmy = (botKey) => {
-    let newBotArray = this.state.botArmy.filter(bot => botKey != bot.id)
+  removeFromBotArmy = (bot) => {
+    let newBotArray = this.state.botArmy.filter(foundBot => bot.id != foundBot.id)
     this.setState({
       botArmy: newBotArray
     })
